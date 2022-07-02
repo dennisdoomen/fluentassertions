@@ -7,6 +7,11 @@ sidebar:
   nav: "sidebar"
 ---
 
+Unreleased
+
+### What's new
+* Adds a `ParentType` to `IObjectInfo` to help determining the parent in a call to `Using`/`When` constructs - [#2000](https://github.com/fluentassertions/fluentassertions/pull/2000)
+
 ## 6.7.0
 
 ### What's new

@@ -227,6 +227,27 @@ public class ExtensibilitySpecs
     }
 
     [Fact]
+    public void Can_exclude_all_properties_of_the_parent_type()
+    {
+        // Arrange
+        var subject = new
+        {
+            Id = "foo",
+        };
+
+        var other = new
+        {
+            Id = 0.5d,
+        };
+
+        // Act
+        subject.Should().BeEquivalentTo(other,
+            o => o
+                .Using<string>(c => c.Subject.Should().Be(c.Expectation))
+                .When(si => si.ParentType != other.GetType() && si.Path == "Id"));
+    }
+
+    [Fact]
     public void When_property_of_subject_is_incompatible_with_generic_type_the_message_should_include_generic_type()
     {
         // Arrange
