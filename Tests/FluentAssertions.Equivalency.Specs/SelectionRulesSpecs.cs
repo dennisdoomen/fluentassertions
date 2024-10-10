@@ -1759,16 +1759,20 @@ public class SelectionRulesSpecs
             // Arrange
             var subject = new SubclassAHidingField
             {
+                // The "new" field
                 Field = "DerivedValue"
             };
 
+            // The equally named field on the base-class of the subject
             ((BaseWithField)subject).Field = "ActualBaseValue";
 
             var expectation = new SubclassBHidingField
             {
+                // The "new" field
                 Field = "DerivedValue"
             };
 
+            // The equally named field on the base-class of the expectation
             ((AnotherBaseWithField)expectation).Field = "ExpectedBaseValue";
 
             // Act / Assert

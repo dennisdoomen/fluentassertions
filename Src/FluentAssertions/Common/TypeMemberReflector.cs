@@ -106,7 +106,7 @@ internal sealed class TypeMemberReflector
             return GetInterfaceMembers(typeToReflect, getMembers);
         }
 
-        return GetClassMembers(typeToReflect, getMembers);
+        return GetClassMembers(typeToReflect, getMembers).Union(GetInterfaceMembers(typeToReflect, getMembers)).ToList();
     }
 
     private static List<TMemberInfo> GetInterfaceMembers<TMemberInfo>(Type typeToReflect,
