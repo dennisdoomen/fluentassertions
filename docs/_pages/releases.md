@@ -24,18 +24,18 @@ sidebar:
 * `JsonNodeAssertions.HaveProperty` no longer throws an `InvalidOperationException` when wrapped in an `AssertionScope` and invoked on a non-`JsonObject` subject - [#3295](https://github.com/fluentassertions/fluentassertions/pull/3295)
 
 ### Breaking Changes (for users)
-* `Func<ValueTask>` and `Func<ValueTask<T>>` used to bind to the synchronous `Should<T>(Func<T>)` overload, which treated the value task as an ordinary return value. They now bind to the new asynchronous overloads instead. Replace `Throw`, `ThrowExactly`, `NotThrow` and `NotThrowAfter` with their `ThrowAsync`, `ThrowExactlyAsync`, `NotThrowAsync` and `NotThrowAfterAsync` counterparts, and note that `Subject` now exposes a task-based adapter rather than the original delegate - [#3301](https://github.com/fluentassertions/fluentassertions/issues/3301)
+* `Func<ValueTask>` and `Func<ValueTask<T>>` used to bind to the synchronous `Should<T>(Func<T>)` overload, which treated the value task as an ordinary return value. They now bind to the new asynchronous overloads instead. Replace `Throw`, `ThrowExactly`, `NotThrow` and `NotThrowAfter` with their `ThrowAsync`, `ThrowExactlyAsync`, `NotThrowAsync` and `NotThrowAfterAsync` counterparts, and note that `Subject` now exposes a task-based adapter rather than the original delegate - [#3301](https://github.com/fluentassertions/fluentassertions/pull/3301)
 
 ## 8.10.0
 
 ### What's new
 
-* Add ComparingNullCollectionsAsEmpty and ComparingNullStringsAsEmpty options to BeEquivalentTo - [#3202](https://github.com/fluentassertions/fluentassertions/pull/3202)
+* Add `ComparingNullCollectionsAsEmpty` and `ComparingNullStringsAsEmpty` options to `BeEquivalentTo` - [#3202](https://github.com/fluentassertions/fluentassertions/pull/3202)
 
 ### Enhancements
 
 * Fail with a descriptive error when path-based rules are used on value-semantic types - [#3187](https://github.com/fluentassertions/fluentassertions/pull/3187)
-* Significantly speed up BeEquivalentTo for large unordered collections - [3189](https://github.com/fluentassertions/fluentassertions/pull/3188)
+* Significantly speed up `BeEquivalentTo` for large unordered collections - [#3189](https://github.com/fluentassertions/fluentassertions/pull/3188)
 * Include original index in extraneous item failure messages - [#3203](https://github.com/fluentassertions/fluentassertions/pull/3203)
 
 ## 8.9.0
