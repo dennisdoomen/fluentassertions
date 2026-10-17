@@ -306,6 +306,16 @@ public static class AssertionExtensions
     }
 
     /// <summary>
+    /// Returns a <see cref="UriAssertions"/> object that can be used to assert the
+    /// current <see cref="Uri"/>.
+    /// </summary>
+    [Pure]
+    public static UriAssertions Should(this Uri actualValue)
+    {
+        return new UriAssertions(actualValue);
+    }
+
+    /// <summary>
     /// Returns an <see cref="HttpResponseMessageAssertions"/> object that can be used to assert the
     /// current <see cref="HttpResponseMessage"/>.
     /// </summary>

@@ -82,6 +82,7 @@ namespace FluentAssertions
         public static FluentAssertions.Primitives.SimpleTimeSpanAssertions Should(this System.TimeSpan actualValue) { }
         public static FluentAssertions.Primitives.NullableSimpleTimeSpanAssertions Should(this System.TimeSpan? actualValue) { }
         public static FluentAssertions.Types.TypeAssertions Should(this System.Type subject) { }
+        public static FluentAssertions.Primitives.UriAssertions Should(this System.Uri actualValue) { }
         public static FluentAssertions.Xml.XAttributeAssertions Should(this System.Xml.Linq.XAttribute actualValue) { }
         public static FluentAssertions.Xml.XDocumentAssertions Should(this System.Xml.Linq.XDocument actualValue) { }
         public static FluentAssertions.Xml.XElementAssertions Should(this System.Xml.Linq.XElement actualValue) { }
@@ -938,6 +939,7 @@ namespace FluentAssertions.Equivalency
         FluentAssertions.Equivalency.GetSubjectId GetSubjectId { get; }
         bool IsRoot { get; }
         string Name { get; set; }
+        System.Type ParentType { get; }
         string Path { get; }
         string PathAndName { get; }
         bool RootIsCollection { get; }
@@ -946,8 +948,10 @@ namespace FluentAssertions.Equivalency
     public interface IObjectInfo
     {
         System.Type CompileTimeType { get; }
+        System.Type ParentType { get; }
         string Path { get; set; }
         System.Type RuntimeType { get; }
+        [System.Obsolete("Use CompileTimeType or RunTimeType instead")]
         System.Type Type { get; }
     }
     public interface IOrderingRule
@@ -985,6 +989,7 @@ namespace FluentAssertions.Equivalency
         public FluentAssertions.Equivalency.GetSubjectId GetSubjectId { get; set; }
         public bool IsRoot { get; }
         public string Name { get; set; }
+        public System.Type ParentType { get; set; }
         public string Path { get; set; }
         public string PathAndName { get; }
         public bool RootIsCollection { get; set; }
@@ -2321,6 +2326,35 @@ namespace FluentAssertions.Primitives
         Exactly = 2,
         Within = 3,
         LessThan = 4,
+    }
+    public class UriAssertions : FluentAssertions.Primitives.UriAssertions<FluentAssertions.Primitives.UriAssertions>
+    {
+        public UriAssertions(System.Uri value) { }
+    }
+    public class UriAssertions<TAssertions> : FluentAssertions.Primitives.ReferenceTypeAssertions<System.Uri, TAssertions>
+        where TAssertions : FluentAssertions.Primitives.UriAssertions<TAssertions>
+    {
+        public UriAssertions(System.Uri value) { }
+        protected override string Identifier { get; }
+        public FluentAssertions.AndConstraint<TAssertions> Be(string expected, string because = "", params object[] becauseArgs) { }
+        public FluentAssertions.AndConstraint<TAssertions> BeAbsolute(string because = "", params object[] becauseArgs) { }
+        public FluentAssertions.AndConstraint<TAssertions> BeBaseOf(System.Uri expected, string because = "", params object[] becauseArgs) { }
+        public FluentAssertions.AndConstraint<TAssertions> BeRelative(string because = "", params object[] becauseArgs) { }
+        public FluentAssertions.AndConstraint<TAssertions> HaveFragment(string expected, string because = "", params object[] becauseArgs) { }
+        public FluentAssertions.AndConstraint<TAssertions> HaveHost(string expected, string because = "", params object[] becauseArgs) { }
+        public FluentAssertions.AndConstraint<TAssertions> HavePath(string expected, string because = "", params object[] becauseArgs) { }
+        public FluentAssertions.AndConstraint<TAssertions> HavePort(int expected, string because = "", params object[] becauseArgs) { }
+        public FluentAssertions.AndWhichConstraint<TAssertions, string> HaveQueryParameter(string name) { }
+        public FluentAssertions.AndConstraint<TAssertions> HaveQueryParameter(string name, string expectedValue, string because = "", params object[] becauseArgs) { }
+        public FluentAssertions.AndConstraint<TAssertions> HaveScheme(string expected, string because = "", params object[] becauseArgs) { }
+        public FluentAssertions.AndConstraint<TAssertions> NotBe(string unexpected, string because = "", params object[] becauseArgs) { }
+        public FluentAssertions.AndConstraint<TAssertions> NotBeBaseOf(System.Uri unexpected, string because = "", params object[] becauseArgs) { }
+        public FluentAssertions.AndConstraint<TAssertions> NotHaveFragment(string unexpected, string because = "", params object[] becauseArgs) { }
+        public FluentAssertions.AndConstraint<TAssertions> NotHaveHost(string unexpected, string because = "", params object[] becauseArgs) { }
+        public FluentAssertions.AndConstraint<TAssertions> NotHavePath(string unexpected, string because = "", params object[] becauseArgs) { }
+        public FluentAssertions.AndConstraint<TAssertions> NotHavePort(int unexpected, string because = "", params object[] becauseArgs) { }
+        public FluentAssertions.AndConstraint<TAssertions> NotHaveQueryParameter(string name, string because = "", params object[] becauseArgs) { }
+        public FluentAssertions.AndConstraint<TAssertions> NotHaveScheme(string unexpected, string because = "", params object[] becauseArgs) { }
     }
 }
 namespace FluentAssertions.Reflection
