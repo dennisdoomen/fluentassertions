@@ -10,6 +10,7 @@ sidebar:
 Unreleased
 
 ### What's new
+* Added `Should()` assertions for `System.Uri`, such as `BeAbsolute`, `HaveScheme`, `HaveHost`, `HavePath` and `HaveQueryParameter` - [#3379](https://github.com/fluentassertions/fluentassertions/issues/3379)
 * Adds a `ParentType` to `IObjectInfo` to help determining the parent in a call to `Using`/`When` constructs - [#2000](https://github.com/fluentassertions/fluentassertions/pull/2000)
 
 ## 6.7.0
